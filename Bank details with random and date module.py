@@ -33,6 +33,7 @@ if len(pwd) == 8:
             if ch == 1:
                 print('Credit')
                 balance = 1000
+                print('Balance: ', balance)
                 cr = int(input('Enter Amount to Be Credited: '))
                 balance = balance + cr
                 print('Balance: ', balance)
@@ -44,6 +45,7 @@ if len(pwd) == 8:
             elif ch == 2:
                 print('Debit')
                 balance = 1000
+                print('Balance: ', balance)
                 db = int(input('Enter Amount to Be Credited: '))
                 balance = balance - db
                 print('Balance: ', balance)
