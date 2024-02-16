@@ -46,7 +46,7 @@ if len(pwd) == 8:
                 print('Debit')
                 balance = 1000
                 print('Balance: ', balance)
-                db = int(input('Enter Amount to Be Credited: '))
+                db = int(input('Enter Amount to Be Debited: '))
                 balance = balance - db
                 print('Balance: ', balance)
             else:
