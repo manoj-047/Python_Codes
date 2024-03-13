@@ -1,3 +1,7 @@
+# Author : Manoj G
+# Date : 15-02-2024
+# Batch : 3:30 - 5:30
+# Description : Create a calculator for various mathematical operations
 
 print("Calculator\nPlease choose the operations which you want to perform")
 print("1.Addition")
