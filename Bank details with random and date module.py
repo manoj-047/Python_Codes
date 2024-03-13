@@ -9,8 +9,10 @@
 import datetime
 import random
 
-print('Welcome To Yono Bank ')
-username, password, acc_no = [], [], []
+print('Welcome To My Bank')
+username, password = [], []
+
+# Register User
 print('Register User')
 uname = input('Enter Username: ')
 pwd = input('Enter Password: ')
@@ -20,41 +22,51 @@ if len(pwd) == 8:
         username.append(uname)
         password.append(pwd)
         print('\nUser Register Success\n')
-        print('User Login')
-        uname = input('Enter Username: ')
-        pwd = input('Enter Password: ')
-        if username[0] == uname and password[0] == pwd:
-            print('\nWelcome to Yono Bank ', uname, '\t\t\t Date: ', datetime.date.today())
-            acc_no = random.randint(1111111111111111, 9999999999999999)
-            print('Your Account Number: ', acc_no)
-            print('1. Credit')
-            print('2. Debit')
-            ch = int(input('Enter your choice: '))
-            if ch == 1:
-                print('Credit')
-                balance = 1000
-                print('Balance: ', balance)
-                cr = int(input('Enter Amount to Be Credited: '))
-                balance = balance + cr
-                print('Balance: ', balance)
-                rate = float(input('Enter the rate of interest: '))
-                interest = (balance * rate) / 100
-                print('Interest added for 1 year is: ', interest)
-                balance = balance + interest
-                print('Total balance after 1 year: ', balance)
-            elif ch == 2:
-                print('Debit')
-                balance = 1000
-                print('Balance: ', balance)
-                db = int(input('Enter Amount to Be Debited: '))
-                balance = balance - db
-                print('Balance: ', balance)
-            else:
-                print('Invalid Choice')
-        else:
-            print('Username or Password Do-not Exist')
     else:
-        print('Password Do-not Match, Re-register')
-
+        print('Passwords do not match, please re-register with the correct password.')
+        exit(1)
 else:
     print('Password length should be 8 characters')
+    exit(1)
+
+# User Login
+print('User Login')
+uname = input('Enter Username: ')
+pwd = input('Enter Password: ')
+if username[0] == uname and password[0] == pwd:
+    print('\nWelcome to Yono Bank', uname, '\t\t\t Date:', datetime.date.today())
+    acc_no = random.randint(1111111111111111, 9999999999999999)
+    print('Your Account Number:', acc_no)
+    balance = 2000  # Assuming initial balance
+
+    while True:
+        print('\nMain Menu:')
+        print('1. Credit')
+        print('2. Debit')
+        print('3. Check Account Balance')
+        print('4. Exit')
+        ch = int(input('Enter your choice: '))
+        if ch == 1:
+            print('Credit')
+            print('Balance:', balance)
+            cr = int(input('Enter Amount to Be Credited: '))
+            balance += cr
+            print('New Balance:', balance)
+        elif ch == 2:
+            print('Debit')
+            print('Balance:', balance)
+            db = int(input('Enter Amount to Be Debited: '))
+            if balance - db < 2000:
+                print('Debit unsuccessful. Minimum balance limit reached.')
+            else:
+                balance -= db
+                print('New Balance:', balance)
+        elif ch == 3:
+            print('Account Balance:', balance)
+        elif ch == 4:
+            print("Thank You!!")
+            exit(0)
+        else:
+            print('Invalid Choice')
+else:
+    print('Username or Password Do-not Exist')
