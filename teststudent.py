@@ -1,3 +1,8 @@
+# Author : Manoj G
+# Date : 15-02-2024
+# Batch : 3:30 - 5:30
+# Description : Update new student details and display the details according after logging in 
+
 class StudentManagement:
     def __init__(self):
         # Initialize dictionary to store student information
