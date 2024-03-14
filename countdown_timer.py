@@ -1,3 +1,8 @@
+# Author : Manoj G
+# Date : 15-02-2024
+# Batch : 3:30 - 5:30
+# Description : Program to start a countdown timer
+
 import time
 
 print("Countdown Timer ")
