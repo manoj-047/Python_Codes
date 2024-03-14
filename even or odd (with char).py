@@ -11,7 +11,7 @@ print("Welcome to Even/Odd Checker")
 while True:
     choice = input("1. Check Even/Odd(From 1 to 10) \n2. Exit\n Choose an option: ").lower()
 
-    if choice == 2:
+    if choice == '2':
         exit()
     elif choice == '1':
         user_input = input("Enter a number: ").lower()  # Convert input to lowercase
