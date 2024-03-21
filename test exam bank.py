@@ -46,14 +46,20 @@ class Account:
         choice = input("Enter your choice: ")
 
         if choice == "1":
+            print("Update Name")
+            print("----------------------------------")
             new_name = input("Enter new name: ")
             self.name = new_name
             print("Name updated successfully.")
         elif choice == "2":
+            print("Update Contact Number")
+            print("----------------------------------")
             new_contact_no = input("Enter new contact number: ")
             self.contact_no = new_contact_no
             print("Contact number updated successfully.")
         elif choice == "3":
+            print("Update Address")
+            print("----------------------------------")
             new_address = input("Enter new address: ")
             self.address = new_address
             print("Address updated successfully.")
@@ -68,16 +74,24 @@ class Bank:
         self.admin_password = 'admin@123'
 
     def create_account(self):
-        account_no = input("Enter account number: ")
-        name = input("Enter name: ")
-        password = input("Enter password: ")
-        contact_no = input("Enter contact number: ")
-        address = input("Enter address: ")
-        initial_deposit = float(input("Enter initial deposit amount: "))
+        print("Create Account")
+        try:
+            account_no = input("Enter account number: ")
+            name = input("Enter name: ")
+            password = input("Enter password: ")
+            rpassword = input("Re-Enter Password: ")
+            if password == rpassword:
+                contact_no = input("Enter contact number: ")
+                address = input("Enter address: ")
+                initial_deposit = float(input("Enter initial deposit amount: "))
 
-        account = Account(account_no, name, password, contact_no, address, initial_deposit)
-        self.accounts[account_no] = account
-        print("Account created successfully.")
+                account = Account(account_no, name, password, contact_no, address, initial_deposit)
+                self.accounts[account_no] = account
+                print("Account created successfully.")
+            else:
+                print("Passwords Do-Not Match")
+        except:
+            print("Enter Numbers Only")
 
     def authenticate_user(self, account_no, password):
         if account_no in self.accounts and not self.accounts[account_no].is_locked:
@@ -126,6 +140,7 @@ class Bank:
 
     def user_menu(self, account):
         while True:
+            print("----------------------------------")
             print("User Menu:")
             print("1. Deposit")
             print("2. Withdraw")
@@ -135,32 +150,45 @@ class Bank:
             print("6. Logout")
 
             option = input("Select an option: ")
+            print("----------------------------------")
 
             if option == "1":
+                print("Deposit")
+                print("----------------------------------")
                 amount = float(input("Enter the deposit amount: "))
                 account.deposit(amount)
 
             elif option == "2":
+                print("Withdraw")
+                print("----------------------------------")
                 amount = float(input("Enter the withdrawal amount: "))
                 account.withdraw(amount)
 
             elif option == "3":
+                print("Account Balance")
+                print("----------------------------------")
                 balance = account.get_balance()
                 print(f"Account balance: {balance}")
 
             elif option == "4":
+                print("Account Transaction History")
+                print("----------------------------------")
                 transactions = account.get_transactions()
                 for transaction in transactions:
                     print(f"{transaction[0]} - {transaction[1]}: {transaction[2]}")
 
             elif option == "5":
+                print("Update Personal information")
+                print("----------------------------------")
                 account.update_personal_info()
 
             elif option == "6":
+                print("Logged Out Successfully")
                 break
 
     def admin_menu(self):
         while True:
+            print("----------------------------------")
             print("Admin Menu:")
             print("1. View Account Information")
             print("2. Lock Account")
@@ -169,24 +197,34 @@ class Bank:
             print("5. Logout")
 
             option = input("Select an option: ")
+            print("----------------------------------")
 
             if option == "1":
+                print("Account Information Of Users")
+                print("----------------------------------")
                 account_no = input("Enter account number: ")
                 self.view_account_info(account_no)
 
             elif option == "2":
+                print("Lock Account")
+                print("----------------------------------")
                 account_no = input("Enter account number: ")
                 self.lock_account(account_no)
 
             elif option == "3":
+                print("Unlock Account")
+                print("----------------------------------")
                 account_no = input("Enter account number: ")
                 self.unlock_account(account_no)
 
             elif option == "4":
+                print("Delete Account")
+                print("----------------------------------")
                 account_no = input("Enter account number: ")
                 self.delete_account(account_no)
 
             elif option == "5":
+                print("Logged Out Successfully")
                 break
 
 
@@ -194,6 +232,7 @@ class Bank:
 bank = Bank()
 
 while True:
+    print("----------------------------------")
     print("Main Menu:")
     print("1. Create Account")
     print("2. User Login")
@@ -201,11 +240,14 @@ while True:
     print("4. Exit")
 
     option = input("Select an option: ")
+    print("----------------------------------")
 
     if option == "1":
         bank.create_account()
 
     elif option == "2":
+        print("User Login")
+        print("----------------------------------")
         account_no = input("Enter your account number: ")
         password = input("Enter your password: ")
         user_account = bank.authenticate_user(account_no, password)
@@ -219,6 +261,8 @@ while True:
             print("Invalid account number or password.")
 
     elif option == "3":
+        print("Admin Login")
+        print("----------------------------------")
         admin_name = input("Enter admin name: ")
         admin_password = input("Enter admin password: ")
         if bank.admin_login(admin_name, admin_password):
@@ -227,4 +271,6 @@ while True:
             print("Invalid admin credentials.")
 
     elif option == "4":
+        print("Exit Success")
+        print("----------------------------------")
         break
